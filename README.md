@@ -205,4 +205,24 @@ A. This means that your collector is not keeping up with the number of
   open-source project and ask your vendors if they can supply you with
   a better solution.
 
+---
+
+## Setting up Docker
+
+Our OpenLI service can now be build and run within a docker environment to test it before you deploy to a large scale.
+
+To find instructiosn on installing Docker please visit the official Docker installation instructions found for your specific operating system below:
+
+
+
+
+Once you have Docker installed is as easy as running the next few commands to get an environment running with OpenLI installed and built directly from the code provided.
+
+To create the Docker image:
+'''# docker build -t openli_build .'''
+
+To run the Docker container from the image built
+'''# docker run -it -v $(pwd):/openli/:ro openli_build'''
+
+To run OpenLI tools from within the container it's as easy following the usage instructions above.
 

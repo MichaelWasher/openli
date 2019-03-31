@@ -19,8 +19,7 @@ RUN apt update && apt install -y\
     libjudy-dev                 \
     libgoogle-perftools-dev
 
-# Need WAND repo for this
-
+# Adding WAND repo for other dependencies
 RUN echo "deb https://packages.wand.net.nz $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/wand.list
 RUN curl https://packages.wand.net.nz/keyring.gpg -o /etc/apt/trusted.gpg.d/wand.gpg
 
@@ -29,7 +28,11 @@ RUN apt update && apt install -y\
     libtrace4                   \
     libwandder1                 \
     libwandder1-dev             
-   
+
+# Build OpenLI and Install
+COPY . /openli/
+RUN /openli/docker/build_and_install.sh
+
+WORKDIR /openli/
 CMD /bin/bash
-
-
+	
